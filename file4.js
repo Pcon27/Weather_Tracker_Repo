@@ -19,7 +19,8 @@ $("#button").on("click", function(event) {
         return response.json()
     })
 
-    .then(function(data){
+// sort through data and create variavles for temp and city name
+     .then(function(data){
         console.log(data);
 
         var { name } = data
@@ -36,20 +37,16 @@ $("#button").on("click", function(event) {
         console.log(lon);
 
         var URL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
-
+        
         fetch(URL2)
 
         .then(function (response2) {
             return response2.json()
         })
 
+    
+    
+    
     })
-
-
-
-
-
-
-
 
 })
