@@ -20,16 +20,14 @@ var searchHistory = $("#searchHistory")
 $("#button").on("click", function(event) {
     event.preventDefault();
 
+
+
 // link city input by user to weather data fetched
     var city = $("#cityInput").val()
     var URL1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + apiKey;
     console.log(city);
 
-    var previousSearches = [];
 
-    localStorage.setItem(previousSearches, JSON.stringify(city));
-
-    var mySavedStuff = JSON.parse( localStorage.getItem(city))
 
 
 
@@ -124,15 +122,8 @@ $("#button").on("click", function(event) {
         })
     
     })
-
 })
 
-// var previousSearches = [];
-    
-// localStorage.setItem(previousSearches, JSON.stringify("boston"))
 
-// var mySavedStuff = JSON.parse( localStorage.getItem(city) )
 
-// searchHistory.append("<button>" + mySavedStuff + "</button>")
-
-// searchHistory.text(city)
+city = ""
