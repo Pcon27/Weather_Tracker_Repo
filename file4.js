@@ -1,6 +1,12 @@
 var apiKey = "2fe2a660ccee4f29bd7d0d10e5775d14"
 var cityName = $("#city")
 var tempInput = $("#tempInput")
+var forcast1 = $("#forcast1")
+var forcast2 = $("#forcast2")
+var forcast3 = $("#forcast3")
+var forcast4 = $("#forcast4")
+var forcast5 = $("#forcast5")
+
 
 // start function on the click of the seach function of HTML form
 $("#button").on("click", function(event) {
@@ -46,11 +52,44 @@ $("#button").on("click", function(event) {
             return response2.json()
         })
 
+        // loop through data to sort through weather for days of the week 
         .then(function(data2) {
             console.log(data2);
             for (var i = 1; i < 6; i++) {
-                var { icon } = data.daily[i].weather[0]
-                var { day } = data.daily[i].temp
+                var { icon } = data2.daily[i].weather[0]
+                var { day } = data2.daily[i].temp
+                var { humidity } =data2.daily[i]
+                console.log(icon)
+                console.log(day)
+
+                if (i===1){
+                    forcast1.append("<p>" + "temp : " + day +  "</p>")
+                    forcast1.append("<p>" + "humidity : " + humidity +  "</p>")
+
+                }
+
+                if (i===2){
+                    forcast2.append("<p>" + "temp : " + day +  "</p>")
+                    forcast2.append("<p>" + "humidity : " + humidity +  "</p>")
+
+                }
+
+                if (i===3){
+                    forcast3.append("<p>" + "temp : " + day +  "</p>")
+                    forcast3.append("<p>" + "humidity : " + humidity +  "</p>")
+                }
+
+                if (i===4){
+                    forcast4.append("<p>" + "temp : " + day +  "</p>")
+                    forcast4.append("<p>" + "humidity : " + humidity +  "</p>")
+                }
+
+                if (i===5){
+                    forcast5.append("<p>" + "temp : " + day +  "</p>")
+                    forcast5.append("<p>" + "humidity : " + humidity +  "</p>")
+                }
+
+
             }
         })
     
