@@ -40,8 +40,12 @@ $("#button").on("click", function(event) {
             return response2.json()
         })
 
-        .then(function(data2){
+        .then(function(data2) {
             console.log(data2);
+            for (var i = 1; i < 6; i+++) {
+                var { icon } = data.daily[i].weather[0]
+                var { day } = data.daily[i].temp
+            }
 
         })
 
