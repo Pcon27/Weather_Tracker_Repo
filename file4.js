@@ -36,6 +36,8 @@ $("#button").on("click", function(event) {
         console.log(lat);
         console.log(lon);
 
+        // create second API fetch
+        
         var URL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
         
         fetch(URL2)
@@ -44,8 +46,13 @@ $("#button").on("click", function(event) {
             return response2.json()
         })
 
-    
-    
+        .then(function(data2) {
+            console.log(data2);
+            for (var i = 1; i < 6; i++) {
+                var { icon } = data.daily[i].weather[0]
+                var { day } = data.daily[i].temp
+            }
+        })
     
     })
 
