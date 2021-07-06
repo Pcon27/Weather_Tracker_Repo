@@ -5,30 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet">
     <title>Document</title>
 </head>
+
+<header>
+    <h1>Weather!</h1>
+</header>
 <body>
-    <label for="exampleDataList" class="form-label">Datalist example</label>
 <form>
     <input id="cityInput" type="text">
         <button id=button></button>
 </form>
 
-<h1 id="city"></h1>
-    <p id="tempInput"></p>
+<section id = "currentSearch">
 
-<div class = forcasts id = "forcast1"></div>
-
-<div class = forcasts id = "forcast2"></div>
-
-<div class = forcasts id = "forcast3"></div>
-
-<div class = forcasts id = "forcast4"></div>
-
-<div class = forcasts id = "forcast5"></div>
+    <div class = currentWeather>
+        <img class = "weatherIcon">
+        <h2 class="date" id="todaysDate"></h2>
+    </div>
 
 
+    <div id = "five">
+        <div class = forcasts id = "forcast1"></div>
+        <div class = forcasts id = "forcast2"></div>
+        <div class = forcasts id = "forcast3"></div>
+        <div class = forcasts id = "forcast4"></div>
+        <div class = forcasts id = "forcast5"></div>
+    </div>
 
+</section>
+
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="file4.js"></script>
 </body>

@@ -1,0 +1,54 @@
+:root{
+    background-color: ivory;
+}
+
+
+
+header{
+    background-color: lightblue;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    color: ivory;
+}
+
+input {
+    border: solid lightblue;
+    background-color: ivory;
+    width: 300px;
+    height: 60px;
+    color: grey;
+}
+
+#currentSearch {
+    display: block;
+}
+
+.currentWeather {
+    position: absolute;
+    right: 60%;
+}
+
+#five {
+    position: absolute;
+    right: 0px;
+    top: 350px;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: right;
+    width: 70%;
+    justify-content: flex-end;
+    border: solid grey;
+}
+
+.forcasts {
+    border: solid black;
+    width: 20%;
+    text-align: center;
+}
+
+
