@@ -13,6 +13,7 @@ var day2Date = moment().add(2, 'days')
 var day3Date = moment().add(3, 'days')
 var day4Date = moment().add(4, 'days')
 var day5Date = moment().add(5, 'days')
+var searchHistory = $("#searchHistory")
 
 
 // start function on the click of the seach function of HTML form
@@ -23,6 +24,13 @@ $("#button").on("click", function(event) {
     var city = $("#cityInput").val()
     var URL1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + apiKey;
     console.log(city);
+
+    var previousSearches = [];
+
+    localStorage.setItem(previousSearches, JSON.stringify(city));
+
+    var mySavedStuff = JSON.parse( localStorage.getItem(city))
+
 
 
 // fetch and return API into a JSON
@@ -47,7 +55,8 @@ $("#button").on("click", function(event) {
         currentWeather.append("<p>" + "Current Temp: " + temp + "</p");
         currentWeather.append("<p>" + "Humidity : " + humidity +  "%" + "</p>")
         currentWeather.append("<p>" + "Wind Speed : " + speed + "</p>")
-        weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + icon + "@2px.png")
+        weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
+        // currentWeather.append("<img>" + "http://openweathermap.org/img/wn/" + icon + "@2px.png" + "</img>")
 
        
         var { lat } = data.coord
@@ -107,9 +116,23 @@ $("#button").on("click", function(event) {
                     forcast5.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
                 }
 
+
+
+                
+
             }
         })
     
     })
 
 })
+
+// var previousSearches = [];
+    
+// localStorage.setItem(previousSearches, JSON.stringify("boston"))
+
+// var mySavedStuff = JSON.parse( localStorage.getItem(city) )
+
+// searchHistory.append("<button>" + mySavedStuff + "</button>")
+
+// searchHistory.text(city)
