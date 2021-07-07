@@ -16,17 +16,26 @@ var day5Date = moment().add(5, 'days')
 var searchHistory = $("#searchHistory")
 
 
+
+
 // start function on the click of the seach function of HTML form
 $("#button").on("click", function(event) {
     event.preventDefault();
-
-
+    
 
 // link city input by user to weather data fetched
     var city = $("#cityInput").val()
     var URL1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + apiKey;
     console.log(city);
 
+
+    var previousSearch = JSON.parse(localStorage.getItem("previousSearch")) || []
+
+    previousSearch.unshift(city)
+
+    localStorage.setItem("previousSearch", JSON.stringify(previousSearch))
+
+    $("#form").append("<button>" + city + "</button>") 
 
 
 
@@ -48,12 +57,17 @@ $("#button").on("click", function(event) {
         var { speed } = data.wind
         var { icon } = data.weather[0]
     
+        currentWeather.empty();
+
+        weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
+        currentWeather.append(weatherIcon)
         currentWeather.append("<h2>" + name + "</h2");
-        $("#todaysDate").text(todaysDate.format("MMM Do, YYYY"));
+        currentWeather.append(todaysDate.format("MMM Do, YYYY"));
         currentWeather.append("<p>" + "Current Temp: " + temp + "</p");
         currentWeather.append("<p>" + "Humidity : " + humidity +  "%" + "</p>")
         currentWeather.append("<p>" + "Wind Speed : " + speed + "</p>")
-        weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
+        
+        
         // currentWeather.append("<img>" + "http://openweathermap.org/img/wn/" + icon + "@2px.png" + "</img>")
 
        
@@ -83,47 +97,70 @@ $("#button").on("click", function(event) {
                 console.log(icon)
                 console.log(day)
 
+
                 if (i===1){
+                    forcast1.empty()
+                    $("#forcast1Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
                     currentWeather.append("<p>" + "UV Index : " + uvi + "</p>")
+                    forcast1.append($("#forcast1Icon"))
                     forcast1.append("<p>" + day1Date.format("MMM Do, YYYY") + "</p>")
                     forcast1.append("<p>" + "temp : " + day +  "</p>")
                     forcast1.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
+                    
+                    
                 }
 
                 if (i===2){
+                    forcast2.empty()
+                    $("#forcast2Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
+                    forcast2.append($("#forcast2Icon"))
                     forcast2.append("<p>" + day2Date.format("MMM Do, YYYY") + "</p>")
                     forcast2.append("<p>" + "temp : " + day +  "</p>")
                     forcast2.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
+                    
                 }
 
                 if (i===3){
+                    forcast3.empty()
+                    $("#forcast3Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
+                    forcast3.append($("#forcast3Icon"))
                     forcast3.append("<p>" + day3Date.format("MMM Do, YYYY") + "</p>")
                     forcast3.append("<p>" + "temp : " + day +  "</p>")
                     forcast3.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
+                    
                 }
 
                 if (i===4){
+                    
+                    forcast4.empty()
+                    $("#forcast4Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
+                    forcast4.append($("#forcast4Icon"))
                     forcast4.append("<p>" + day4Date.format("MMM Do, YYYY") + "</p>")
                     forcast4.append("<p>" + "temp : " + day +  "</p>")
                     forcast4.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
+                    
                 }
 
                 if (i===5){
+                    forcast5.empty()
+                    $("#forcast5Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
+                    forcast5.append($("#forcast5Icon"))
                     forcast5.append("<p>" + day5Date.format("MMM Do, YYYY") + "</p>")
                     forcast5.append("<p>" + "temp : " + day +  "</p>")
                     forcast5.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
+                    
                 }
 
+                if (uvi > 2){
 
-
+                }
                 
 
             }
         })
     
     })
+   
 })
 
 
-
-city = ""

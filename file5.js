@@ -15,3 +15,22 @@ var day4Date = moment().add(4, 'days')
 var day5Date = moment().add(5, 'days')
 var searchHistory = $("#searchHistory")
 
+// start function on the click of the seach function of HTML form
+$("#button").on("click", function(event) {
+    event.preventDefault();
+
+    // link city input by user to weather data fetched
+    var city = $("#cityInput").val()
+    var URL1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + apiKey;
+    console.log(city);
+
+    // fetch and return API into a JSON
+    fetch(URL1)
+
+    .then(function (response) {
+        return response.json()
+    })
+
+    
+
+})
