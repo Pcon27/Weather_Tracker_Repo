@@ -16,6 +16,7 @@ var day5Date = moment().add(5, 'days')
 var searchHistory = $("#searchHistory")
 var previousSearches = $("#previousSearches")
 var children = previousSearches.children()
+var UVIndex = $("#UVI")
 
 
 
@@ -31,13 +32,6 @@ $("#button").on("click", function(event) {
     var URL1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + apiKey;
     console.log(city);
 
-
-    children.on("click", function(event) {
-
-        city  = event.target.textcontent;
-        console.log(city2)
-    
-    })
     
 
     var previousSearch = JSON.parse(localStorage.getItem("previousSearch")) || []
@@ -112,9 +106,9 @@ $("#button").on("click", function(event) {
 
 
                 if (i===1){
+                     
                     forcast1.empty()
                     $("#forcast1Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
-                    currentWeather.append("<p>" + "UV Index : " + uvi + "</p>")
                     forcast1.append($("#forcast1Icon"))
                     forcast1.append("<p>" + day1Date.format("MMM Do, YYYY") + "</p>")
                     forcast1.append("<p>" + "temp : " + day +  "</p>")
@@ -160,14 +154,23 @@ $("#button").on("click", function(event) {
                     forcast5.append("<p>" + day5Date.format("MMM Do, YYYY") + "</p>")
                     forcast5.append("<p>" + "temp : " + day +  "</p>")
                     forcast5.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
-                    
                 }
 
                 if (uvi > 2){
 
                 }
-                
-
+            }
+            UVIndex.text("UV Index : " + uvi)
+            currentWeather.append(UVIndex)
+            
+            if (uvi < 3){
+                UVIndex.css ("background-color", "green")
+            }
+            else if (uvi > 7){
+                UVIndex.css ("background-color", "red")
+            }
+            else {
+                UVIndex.css ("background-color", "yellow")
             }
         })
     
