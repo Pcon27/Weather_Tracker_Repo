@@ -69,7 +69,7 @@ $("#button").on("click", function(event) {
         weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
         currentWeather.append(weatherIcon)
         currentWeather.append("<h2>" + name + "</h2");
-        currentWeather.append(todaysDate.format("MMM Do, YYYY"));
+        currentWeather.append(todaysDate.format("l"));
         currentWeather.append("<p>" + "Current Temp: " + temp + "</p");
         currentWeather.append("<p>" + "Humidity : " + humidity +  "%" + "</p>")
         currentWeather.append("<p>" + "Wind Speed : " + speed + "</p>")
@@ -104,33 +104,34 @@ $("#button").on("click", function(event) {
                 console.log(icon)
                 console.log(day)
 
+                
 
                 if (i===1){
                      
-                    forcast1.empty()
+                    forcast1.empty();
                     $("#forcast1Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
                     forcast1.append($("#forcast1Icon"))
-                    forcast1.append("<p>" + day1Date.format("MMM Do, YYYY") + "</p>")
+                    forcast1.append("<p>" + day1Date.format("l") + "</p>")
                     forcast1.append("<p>" + "temp : " + day +  "</p>")
                     forcast1.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
                     
                 }
 
                 if (i===2){
-                    forcast2.empty()
+                    forcast2.empty();
                     $("#forcast2Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
                     forcast2.append($("#forcast2Icon"))
-                    forcast2.append("<p>" + day2Date.format("MMM Do, YYYY") + "</p>")
+                    forcast2.append("<p>" + day2Date.format("l") + "</p>")
                     forcast2.append("<p>" + "temp : " + day +  "</p>")
                     forcast2.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
                     
                 }
 
                 if (i===3){
-                    forcast3.empty()
+                    forcast3.empty();
                     $("#forcast3Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
                     forcast3.append($("#forcast3Icon"))
-                    forcast3.append("<p>" + day3Date.format("MMM Do, YYYY") + "</p>")
+                    forcast3.append("<p>" + day3Date.format("l") + "</p>")
                     forcast3.append("<p>" + "temp : " + day +  "</p>")
                     forcast3.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
                     
@@ -138,20 +139,20 @@ $("#button").on("click", function(event) {
 
                 if (i===4){
                     
-                    forcast4.empty()
+                    forcast4.empty();
                     $("#forcast4Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
                     forcast4.append($("#forcast4Icon"))
-                    forcast4.append("<p>" + day4Date.format("MMM Do, YYYY") + "</p>")
+                    forcast4.append("<p>" + day4Date.format("l") + "</p>")
                     forcast4.append("<p>" + "temp : " + day +  "</p>")
                     forcast4.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
                     
                 }
 
                 if (i===5){
-                    forcast5.empty()
+                    forcast5.empty();
                     $("#forcast5Icon").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
                     forcast5.append($("#forcast5Icon"))
-                    forcast5.append("<p>" + day5Date.format("MMM Do, YYYY") + "</p>")
+                    forcast5.append("<p>" + day5Date.format("l") + "</p>")
                     forcast5.append("<p>" + "temp : " + day +  "</p>")
                     forcast5.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
                 }
