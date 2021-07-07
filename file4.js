@@ -14,6 +14,8 @@ var day3Date = moment().add(3, 'days')
 var day4Date = moment().add(4, 'days')
 var day5Date = moment().add(5, 'days')
 var searchHistory = $("#searchHistory")
+var previousSearches = $("#previousSearches")
+var children = previousSearches.children()
 
 
 
@@ -23,11 +25,20 @@ $("#button").on("click", function(event) {
     event.preventDefault();
     
 
+
 // link city input by user to weather data fetched
     var city = $("#cityInput").val()
     var URL1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + apiKey;
     console.log(city);
 
+
+    children.on("click", function(event) {
+
+        city  = event.target.textcontent;
+        console.log(city2)
+    
+    })
+    
 
     var previousSearch = JSON.parse(localStorage.getItem("previousSearch")) || []
 
@@ -35,7 +46,9 @@ $("#button").on("click", function(event) {
 
     localStorage.setItem("previousSearch", JSON.stringify(previousSearch))
 
-    $("#form").append("<button>" + city + "</button>") 
+    $("#previousSearches").append("<button>" + city + "</button>") 
+    
+
 
 
 
@@ -107,7 +120,6 @@ $("#button").on("click", function(event) {
                     forcast1.append("<p>" + "temp : " + day +  "</p>")
                     forcast1.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
                     
-                    
                 }
 
                 if (i===2){
@@ -164,3 +176,11 @@ $("#button").on("click", function(event) {
 })
 
 
+children.on("click", function(event) {
+
+    var city2  = event.target.textcontent;
+    console.log(city2)
+
+})
+
+ 
