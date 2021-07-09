@@ -19,36 +19,8 @@ var children = previousSearches.children()
 var UVIndex = $("#UVI")
 
 
-
-
-// start function on the click of the seach function of HTML form
-$("#button").on("click", function(event) {
-    event.preventDefault();
-    
-
-
-// link city input by user to weather data fetched
-    var city = $("#cityInput").val()
-    var URL1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + apiKey;
-    console.log(city);
-
-    
-
-    var previousSearch = JSON.parse(localStorage.getItem("previousSearch")) || []
-
-    previousSearch.unshift(city)
-
-    localStorage.setItem("previousSearch", JSON.stringify(previousSearch))
-
-    $("#previousSearches").append("<button>" + city + "</button>") 
-    
-
-
-
-
-
-// fetch and return API into a JSON
-    fetch(URL1)
+function getWeatherData(queryURL) {
+    fetch(queryURL)
 
     .then(function (response) {
         return response.json()
@@ -105,7 +77,7 @@ $("#button").on("click", function(event) {
                 console.log(day)
 
                 
-
+               
                 if (i===1){
                      
                     forcast1.empty();
@@ -155,6 +127,7 @@ $("#button").on("click", function(event) {
                     forcast5.append("<p>" + day5Date.format("l") + "</p>")
                     forcast5.append("<p>" + "temp : " + day +  "</p>")
                     forcast5.append("<p>" + "humidity : " + humidity +  "%" + "</p>")
+                    
                 }
 
                 if (uvi > 2){
@@ -176,6 +149,36 @@ $("#button").on("click", function(event) {
         })
     
     })
+}
+
+// start function on the click of the seach function of HTML form
+$("#button").on("click", function(event) {
+    event.preventDefault();
+    
+
+
+// link city input by user to weather data fetched
+    var city = $("#cityInput").val()
+    var URL1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + apiKey;
+    console.log(city);
+
+    
+
+    var previousSearch = JSON.parse(localStorage.getItem("previousSearch")) || []
+
+    previousSearch.unshift(city)
+
+    localStorage.setItem("previousSearch", JSON.stringify(previousSearch))
+
+    $("#previousSearches").append("<button class = 'previousCityButton'>" + city + "</button>") 
+    
+
+
+
+
+
+// fetch and return API into a JSON
+getWeatherData(URL1)
    
 })
 
@@ -187,4 +190,14 @@ children.on("click", function(event) {
 
 })
 
- 
+
+$(document).on("click", ".previousCityButton", function(event) {
+    event.preventDefault();
+
+
+    var cityOnButton = $(this).text()
+    var URL3 = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityOnButton + '&units=imperial&appid=' + apiKey;
+
+    getWeatherData(URL3)
+
+})
